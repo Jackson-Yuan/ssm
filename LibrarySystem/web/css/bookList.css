@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    width: 1200px;
+    margin: 0 auto;
+    border: solid 1px;
+    overflow: hidden;
+}
+
+#header{
+    width:100%;
+    height: 70px;
+    text-align: center;
+}
+#header p{
+    width: 100%;
+    height:35px;
+    line-height: 35px;
+}
+#body{
+    width: 100%;
+}
+#body #wrong{
+    background-color: #eee;
+    text-align: center;
+    color: red;
+}
+#wrong p{
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+}
+#wrong a{
+    display: block;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+}
+.bookInfo{
+    width: 1200px;
+    margin:0 auto;
+    border:solid 1px;
+    overflow:hidden;
+}
+.bookInfo li{
+    list-style: none;
+    width:240px;
+    float: left;
+    text-align: center;
+    height: 21px;
+    line-height:21px;
+    background-color:#eee
+}
+.bookInfo button{
+    width:240px;
+    height: 20px;
+}
