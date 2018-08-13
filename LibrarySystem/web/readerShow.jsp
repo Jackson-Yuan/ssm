@@ -50,6 +50,7 @@
             <a href="index.jsp">Return........</a>
             <c:if test="${requestScope.loginReader.cardState == true}">
                 <a href="bookList.jsp">去借阅</a>
+                <a href="/returnbookinfo?idCard=${requestScope.loginReader.idCard}">去归还</a>
             </c:if>
             <a href="/editReader?idCard=${requestScope.loginReader.idCard}">个人信息编辑</a>
         </div>

@@ -24,7 +24,7 @@
             <form action="${pageContext.request.contextPath}/bookshow" method="get">
                 bookName:<input type="text" name="bookName" placeholder="selectAll"><br>
                 bookAuthor:<input type="text" name="bookAuthor" placeholder="selectAll"><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" id="book_submit">
             </form>
         </div>
         <div id="searchReader">

@@ -1,18 +1,18 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
-  Date: 2018/8/3
-  Time: 21:11
+  Date: 2018/8/12
+  Time: 10:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>图书展示</title>
+    <title>Title</title>
     <link rel="stylesheet" type="text/css" href="css/bookList.css">
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="js/bookList.js"></script>
+    <script type="text/javascript" src="js/selectbook.js"></script>
 </head>
 <body>
 <div id="container">
@@ -29,7 +29,7 @@
                         <li>${empty book.author ? "无":book.author}</li>
                         <li>${book.press}</li>
                         <li id="${book.ISBN}">${book.availableNumber}</li>
-                        <li><button type="button" class="borrow" value="${book.ISBN}">Borrow</button> </li>
+                        <li><button type="button" class="return" value="${book.ISBN}">Return</button> </li>
                     </ul>
                 </div>
             </c:forEach>
@@ -37,7 +37,7 @@
 
         <c:if test="${empty requestScope.books}">
             <div id="wrong">
-                <p>很遗憾 没有相关书籍</p>
+                <p>很遗憾 没有借阅书籍</p>
                 <a href="/index.jsp">Return</a>
             </div>
         </c:if>

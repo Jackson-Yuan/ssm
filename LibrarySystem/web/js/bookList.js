@@ -8,7 +8,7 @@ $(document).ready(function () {
         var selector = "#"+id;
         var agrs = {
             "ISBN":id,
-            "idCard":"10009",
+            "idCard":$("#reader_id").text(),
             "borrowingDate":new Date()
         };
         $.post(url,agrs,function (data) {
@@ -20,19 +20,20 @@ $(document).ready(function () {
     });
 
     $("#loginOut").click(function () {
-        var url = "/cancellationReader";
+        var url = "/cancellationReader?time="+ new Date(); /**防止缓存这个链接的响应结果，使得后续的操作无效*/
 
         $.ajax({
+            type:"GET",
             url:url,
             async:true,
             success:function (data) {
-                console.log(data);
                 window.location.href="/index.jsp";
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
                console.log(XMLHttpRequest);
                console.log(textStatus);
                console.log(errorThrown);
+               // window.location.href="/index.jsp";
             }
         });
 

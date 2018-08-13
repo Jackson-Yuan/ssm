@@ -23,4 +23,8 @@
     <insert id="insertReader" parameterType="com.yyc.entity.Reader">
         INSERT readers VALUES (#{idCard},#{name},#{age},#{gender},#{cardState},#{cardDate})
     </insert>
+
+    <select id="getBorrowedBooks" resultType="com.yyc.entity.Book">
+        SELECT books.ISBN,books.title,books.author,books.press,books.available_number FROM rb,books WHERE rb.id_card = #{idCard} AND rb.ISBN = books.ISBN AND rb.return_date IS NULL
+    </select>
 </mapper>

@@ -58,4 +58,23 @@ $(document).ready(function () {
             // if (flag === 1) return false;
         }
     });
+
+
+    $("#book_submit").click(function () {
+        var flag = 0;
+        var url = "/validatebook";
+        $.ajax({
+            type:"GET",
+            url:url,
+            async:false,
+            success:function (data) {
+                if (data.success == false){
+                    alert("请先登录!");
+                    flag = 1;
+                }
+            }
+        })
+
+        if (flag !== 0) return false;
+    });
 });
