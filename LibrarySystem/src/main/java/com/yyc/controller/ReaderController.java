@@ -15,7 +15,6 @@ import java.util.Map;
  * Created by yyc on 2018/8/8.
  */
 @Controller
-@SessionAttributes("loginReader")
 public class ReaderController {
     @Autowired
     private ReaderService readerService;
@@ -32,11 +31,13 @@ public class ReaderController {
     }
 
     /**登录*/
+    /**sessionattribute少用，销毁session里面的数据销毁不了，可能更springmvc流程有关*/
     @RequestMapping("/readershow")
-    public String getReaderInfo(@RequestParam(value = "readerCard",required = false) String idCard, Map<String,Object> map){
+    public String getReaderInfo(@RequestParam(value = "readerCard",required = false) String idCard, Map<String,Object> map,HttpSession session){
         if (idCard != null){
             Reader reader = readerService.getReader(idCard);
             map.put("loginReader",reader);
+            session.setAttribute("loginReader",reader);
         }
         return "readerShow";
     }
@@ -85,16 +86,9 @@ public class ReaderController {
     /**注销*/
     @ResponseBody
     @RequestMapping("/cancellationReader")
-    public Result<String> deleteSessionReader(HttpSession httpSession)
+    public Result deleteSessionReader(HttpSession httpSession)
     {
-        Result<String> result = null;
-        try {
-            httpSession.invalidate();
-            result = new Result<>(true,"退出成功","hhhhhhh");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            result = new Result<>(false,"退出失败","hhhhhhh");
-        }
-        return result;
+        httpSession.invalidate();
+        return null;
     }
 }

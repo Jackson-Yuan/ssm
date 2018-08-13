@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by yyc on 2018/8/6.
  */
@@ -36,6 +38,10 @@ public class ReaderBookInfoService {
         }
 
         return book;
+    }
+
+    public void updateRbInfo(String idCard, String ISBN, Date date){
+        readerBookInfoMapper.updateRbReturnDate(date,idCard,ISBN);
     }
 
 }

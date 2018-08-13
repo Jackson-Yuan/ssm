@@ -1,12 +1,17 @@
 package com.yyc.controller;
 
 import com.yyc.entity.Book;
+import com.yyc.entity.Reader;
+import com.yyc.entity.Result;
 import com.yyc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -32,5 +37,21 @@ public class BookController {
         }
         map.put("books",books);
         return "bookList";
+    }
+
+    @ResponseBody
+    @RequestMapping("/validatebook")
+    public Result<String> validateBook(HttpSession session){
+        Reader reader = (Reader) session.getAttribute("loginReader");
+        if (reader != null) return new Result<>(true,"","");
+        else return new Result<>(false,"","");
+
+    }
+
+    @RequestMapping("//returnbookinfo")
+    public String returnBookInfo(@RequestParam("idCard") String id, Model model){
+        List<Book> books = bookService.getBorrowedBooksInfo(id);
+        model.addAttribute("books",books);
+        return "selectBook";
     }
 }

@@ -34,4 +34,9 @@ public class ReaderTest {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void testBorrowed(){
+        System.out.println(readerMapper.getBorrowedBooks("10009"));
+    }
 }

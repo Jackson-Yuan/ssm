@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Created by yyc on 2018/8/6.
  */
@@ -39,5 +41,23 @@ public class ReaderBookInfoController {
 //        String ISBN = readerBookInfo.getISBN();
 //        book = bookService.getBook(ISBN);
 //        return new Result<>(true,book, BorrowEnum.SUCCESS.getStateInfo());
+    }
+
+    @RequestMapping("returnbook")
+    @ResponseBody
+    public Result returnBook(ReaderBookInfo readerBookInfo){
+        String idCard = readerBookInfo.getIdCard();
+        String ISBN = readerBookInfo.getISBN();
+        Date date = readerBookInfo.getReturnDate();
+        Result<String> result = null;
+
+        try{
+            readerBookInfoService.updateRbInfo(idCard,ISBN,date);
+            result = new Result<>(true,"success");
+        }catch (Exception e){
+            result = new Result<>(false,"failure");
+        }
+
+        return result;
     }
 }

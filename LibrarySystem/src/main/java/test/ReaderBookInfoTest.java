@@ -43,4 +43,10 @@ public class ReaderBookInfoTest {
         }
 
     }
+
+    @Test
+    public void testUpdate(){
+        Date date2 = new Date(2018,6,14,19,4,10);
+        readerBookInfoMapper.updateRbReturnDate(date2,"10009","9787302479499");
+    }
 }
