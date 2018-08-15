@@ -16,6 +16,7 @@
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <!-- 默认匹配所有的请求 -->
+        <!--不能加* 不然匹配.jsp 进入dispatchServlet 报错  同时也要开启mvc annotation 与mvc default servlet-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -34,6 +35,16 @@
 
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>sessionFilter</filter-name>
+        <filter-class>com.yyc.Filter.SessionFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>sessionFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
