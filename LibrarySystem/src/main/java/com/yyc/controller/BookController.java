@@ -40,7 +40,7 @@ public class BookController {
     }
 
     @ResponseBody
-    @RequestMapping("/validatebook")
+    @RequestMapping("/ajaxvalidatebook")
     public Result<String> validateBook(HttpSession session){
         Reader reader = (Reader) session.getAttribute("loginReader");
         if (reader != null) return new Result<>(true,"","");
@@ -48,7 +48,7 @@ public class BookController {
 
     }
 
-    @RequestMapping("//returnbookinfo")
+    @RequestMapping("/returnbookinfo")
     public String returnBookInfo(@RequestParam("idCard") String id, Model model){
         List<Book> books = bookService.getBorrowedBooksInfo(id);
         model.addAttribute("books",books);

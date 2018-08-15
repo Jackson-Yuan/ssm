@@ -20,7 +20,7 @@ public class ReaderController {
     private ReaderService readerService;
 
     /**提交之前验证卡号是否存在*/
-    @RequestMapping("/validateidCard")
+    @RequestMapping("/ajaxvalidateidCard")
     @ResponseBody
     public Result<String> validateReader(@RequestParam(value = "idCard",required = false) String idCard){
         if (idCard != null){
