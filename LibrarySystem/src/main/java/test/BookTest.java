@@ -1,6 +1,7 @@
 package test;
 
 import com.yyc.dao.BookMapper;
+import com.yyc.entity.SearchBook;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,19 @@ public class BookTest {
     @Test
     public void testGetBook(){
         System.out.println(bookMapper.getBook("9787111511632"));
+    }
+
+    @Test
+    public void testGetCount(){
+//        int sum=bookMapper.getCount();
+//        System.out.println(sum);
+        SearchBook searchBook = new SearchBook("%%","%%",1,2);
+        System.out.println(bookMapper.getCount(searchBook));
+    }
+
+    @Test
+    public void testQueryPage(){
+        SearchBook searchBook = new SearchBook("%计算机%",null,1,2);
+        System.out.println(bookMapper.getPageQuery(searchBook));
     }
 }

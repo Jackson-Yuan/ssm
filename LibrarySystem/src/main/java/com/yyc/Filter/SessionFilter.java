@@ -16,7 +16,7 @@ public class SessionFilter extends HttpFilter {
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         String path = request.getServletPath();
-        System.out.println(path);
+//        System.out.println(path);
         if (path.endsWith(".css") || path.endsWith(".js")|| path.endsWith(".jsp")|| path.endsWith(".html")|| path.startsWith("/ajax")|| path.endsWith("show")) {
             filterChain.doFilter(request,response);
             return;
