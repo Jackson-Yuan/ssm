@@ -7,7 +7,7 @@ $(document).ready(function () {
         value = $.trim(value);
 
         if (value !== ""){
-            var url = "/validateidCard";
+            var url = "/ajaxvalidateidCard";
 
             var agrs = {
                 "idCard":value
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
     $("#book_submit").click(function () {
         var flag = 0;
-        var url = "/validatebook";
+        var url = "/ajaxvalidatebook";
         $.ajax({
             type:"GET",
             url:url,

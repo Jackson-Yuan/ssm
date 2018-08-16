@@ -33,6 +33,22 @@
                     </ul>
                 </div>
             </c:forEach>
+            <c:if test="${requestScope.queryInfo.sumPage > 1}">
+                <div id="page_operation">
+                    <a href="/bookshow?page=1&bookName=${requestScope.queryInfo.bookName}&authorName=${requestScope.queryInfo.authorName}">
+                        <button type="button" id="first">首页</button>
+                    </a>
+                    <a href="/bookshow?page=${requestScope.queryInfo.page == 1 ? 1 : requestScope.queryInfo.page - 1}&bookName=${requestScope.queryInfo.bookName}&authorName=${requestScope.queryInfo.authorName}">
+                        <button type="button" id="before">上一页</button>
+                    </a>
+                    <a href="/bookshow?page=${requestScope.queryInfo.page+1}&bookName=${requestScope.queryInfo.bookName}&authorName=${requestScope.queryInfo.authorName}">
+                        <button type="button" id="next" >下一页</button>
+                    </a>
+                    <a href="/bookshow?page=${requestScope.queryInfo.sumPage}&bookName=${requestScope.queryInfo.bookName}&authorName=${requestScope.queryInfo.authorName}">
+                        <button type="button" id="last">尾页</button>
+                    </a>
+                </div>
+            </c:if>
         </c:if>
 
         <c:if test="${empty requestScope.books}">

@@ -22,6 +22,11 @@
 }
 #body{
     width: 100%;
+    height: 500px;
+}
+#page_operation{
+    height:30px;
+    text-align: center;
 }
 #body #wrong{
     background-color: #eee;
