@@ -62,9 +62,11 @@ public class ReaderController {
      * 取得匹配键的对象，与前台传过来的参数进行匹配，会对值进行覆盖，注意此处是editCard，不会对idcard覆盖，其余均覆盖
      * */
     @RequestMapping("/completeReader")
-    public String completeEditReader(@ModelAttribute("editReader") Reader reader, Model model){
-        model.addAttribute("reader",reader);
+    public String completeEditReader(@ModelAttribute("editReader") Reader reader, Model model,HttpSession session){
+        model.addAttribute("loginReader",reader);
         readerService.updateReaderInfo(reader);
+        /**每次更新用户信息的操作，都必须同步到session域中的操作*/
+        session.setAttribute("loginReader",reader);
         return "readerShow";
     }
 

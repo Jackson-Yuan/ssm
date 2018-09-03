@@ -3,6 +3,8 @@ package com.yyc.entity;
 /**
  * Created by yyc on 2018/8/16.
  */
+
+/**分页查询封装对象*/
 public class SearchBook {
     private String bookName;
 

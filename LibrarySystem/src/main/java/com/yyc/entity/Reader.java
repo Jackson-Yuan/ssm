@@ -18,6 +18,8 @@ public class Reader {
 
     private Date cardDate;
 
+    private String pictureUrl;
+
     public Reader() {
     }
 
@@ -76,6 +78,14 @@ public class Reader {
 
     public void setCardDate(Date cardDate) {
         this.cardDate = cardDate;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
     @Override
