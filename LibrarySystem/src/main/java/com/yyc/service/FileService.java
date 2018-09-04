@@ -2,6 +2,7 @@ package com.yyc.service;
 
 import com.yyc.dao.ReaderMapper;
 import com.yyc.entity.Reader;
+import com.yyc.exception.IllegalException;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -42,6 +43,13 @@ public class FileService {
         return fileUrl;
     }
 
+    private boolean validateFileSuffix(String fileUrl){
+        if (fileUrl.endsWith(".jpg") || fileUrl.endsWith(".jpeg") || fileUrl.endsWith(".png") || fileUrl.endsWith(".gif")){
+            return true;
+        }
+        return false;
+    }
+
     public Reader processUpload(HttpServletRequest request,String tempUrl,String targetUrl) throws IOException {
         ServletFileUpload upload = getUpload(tempUrl);
         Reader reader = null;
@@ -57,6 +65,12 @@ public class FileService {
             for (FileItem item:items){
                 if (!item.isFormField()){
                     String fileName = item.getName();
+                    if (fileName.isEmpty()){
+                        return reader;
+                    }
+                    if (!validateFileSuffix(fileName)){
+                        throw new IllegalException("非法图片文件");
+                    }
                     fileName = getFileName(fileName);
 
                     InputStream in = item.getInputStream();
@@ -76,6 +90,8 @@ public class FileService {
             }
         } catch (FileUploadException e) {
             e.printStackTrace();
+        }catch (IllegalException e){
+            throw e;
         }
         return  reader;
     }
