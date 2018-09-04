@@ -1,6 +1,7 @@
 package com.yyc.controller;
 
 import com.yyc.entity.Reader;
+import com.yyc.exception.IllegalException;
 import com.yyc.service.FileService;
 import com.yyc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,14 @@ public class FileController {
 
     @RequestMapping("/file")
     public String processUpload(HttpServletRequest request, Model model) throws IOException {
-        Reader reader = fileService.processUpload(request, tempPrefix, targetPrefix);
+        Reader reader = null;
+        try {
+            reader = fileService.processUpload(request, tempPrefix, targetPrefix);
+        }catch (IllegalException e){
+            model.addAttribute("wrongMessage",e.getMessage());
+            return "editpicture";
+        }
+
         model.addAttribute("reader", reader);
         request.getSession().setAttribute("loginReader", reader);
         readerService.updateReaderInfo(reader);
