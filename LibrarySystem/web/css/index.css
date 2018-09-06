@@ -24,6 +24,7 @@
 }
 
 #body{
+    width: 1200px;
     overflow:hidden;
     height: 100px;
 }

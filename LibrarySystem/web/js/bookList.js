@@ -12,7 +12,8 @@ $(document).ready(function () {
             "borrowingDate":new Date()
         };
         $.post(url,agrs,function (data) {
-            alert(data.message);
+            $("#borrowMessage .modal-body").text(data.message);
+            $("#borrowMessage").modal();
             console.log(data);
             console.log(data.data);
             $(selector).text(data.data.availableNumber)

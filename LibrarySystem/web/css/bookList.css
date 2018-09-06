@@ -4,7 +4,7 @@
 }
 
 #container{
-    width: 1200px;
+    width: 1202px;
     margin: 0 auto;
     border: solid 1px;
     overflow: hidden;
@@ -27,6 +27,7 @@
 #page_operation{
     height:30px;
     text-align: center;
+    margin-top: 50px;
 }
 #body #wrong{
     background-color: #eee;
@@ -45,21 +46,25 @@
     line-height: 100px;
 }
 .bookInfo{
-    width: 1200px;
+    width: 1202px;
     margin:0 auto;
     border:solid 1px;
     overflow:hidden;
 }
 .bookInfo li{
     list-style: none;
-    width:240px;
+    width:200px;
     float: left;
     text-align: center;
-    height: 21px;
-    line-height:21px;
-    background-color:#eee
+    height: 40px;
+    line-height:40px;
+    background-color:#eee;
+    overflow:hidden;
 }
 .bookInfo button{
-    width:240px;
-    height: 20px;
+    width:200px;
+    height: 40px;
+}
+#bookInfoBody{
+    height: 210px;
 }

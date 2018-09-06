@@ -64,7 +64,10 @@
                         <td><input type="datetime" name="cardDate" value="${requestScope.reader.cardDate}" readonly="readonly"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="Update"></td>
+                        <td colspan="2">
+                            <input type="submit" value="Update">
+                            <a href="/editpicture.jsp"><button type="button">配置头像</button></a>
+                        </td>
                     </tr>
                 </table>
             </form>

@@ -28,7 +28,7 @@ $(document).ready(function () {
             alert("请填写卡号");
             return false;
         }else{
-            var url = "/validateidCard";
+            var url = "/ajaxvalidateidCard";
 
             var flag = 0;
             console.log(flag);
@@ -47,15 +47,14 @@ $(document).ready(function () {
                success:function (data) {
                    console.log(data.data);
                    /**没有数据响应过来时,时undefined 不是null*/
-                   if (data.data !== undefined){
+                   if (data.success == false){
                        alert("考号不存在！");
                        flag = 1;
                    }
                }
            });
 
-            if (flag !== 0) return false;
-            // if (flag === 1) return false;
+            if (flag === 1) return false;
         }
     });
 
